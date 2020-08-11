@@ -1,94 +1,58 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./KinoApp.css";
+import Form from "../../components/KinoApp/Form/Form";
+import FilmItem from "../../components/KinoApp/FilmItem/FilmItem";
 
-export default class KinoApp extends Component {
-	state = {
-		films: [],
-		inputValue: "",
-	};
-	addFilm = (event) => {
+export default function KinoApp(props) {
+	const [films, setFilms] = useState([]);
+	const [inputValue, setInputValue] = useState("");
+	const addFilm = (event) => {
 		event.preventDefault();
-		if (!this.state.inputValue) return;
-		if (
-			this.state.films
-				.map((elem) => elem.name)
-				.indexOf(this.state.inputValue) + 1
-		) {
+		if (!inputValue) return;
+		if (films.map((elem) => elem.name).indexOf(inputValue) + 1) {
 			alert("This film has in list.");
 			return;
 		}
-		this.setState({
-			...this.state,
-			films: [
-				...this.state.films,
-				{
-					name: this.state.inputValue,
-					id: new Date().getTime(),
-				},
-			],
-			inputValue: "",
-		});
+		setFilms([
+			...films,
+			{ name: inputValue, id: new Date().getTime() },
+		]);
 	};
-	changeFilmName = (event, id) => {
-		const index = this.state.films.findIndex((film) => film.id === id);
-		const copyFilms = [...this.state.films];
+	const changeFilmName = (event, id) => {
+		const index = films.findIndex((film) => film.id === id);
+		const copyFilms = [...films];
 		copyFilms[index].name = event.target.value;
-		this.setState({
-			...this.state,
-			films: copyFilms,
-		});
+		setFilms(copyFilms);
 	};
-	deleteFilm = (id) => {
-		const index = this.state.films.findIndex((film) => film.id === id);
-		const copyFilms = [...this.state.films];
+	const deleteFilm = (id) => {
+		const index = films.findIndex((film) => film.id === id);
+		const copyFilms = [...films];
 		copyFilms.splice(index, 1);
-		this.setState({
-			...this.state,
-			films: copyFilms,
-		});
+		setFilms(copyFilms);
 	};
-	render() {
-		return (
-			<div className="KinoApp">
-				<h3 className="title">Kino app</h3>
-				<form onSubmit={this.addFilm}>
-					<div className="form">
-						<input
-							type="text"
-							className="add-record-input"
-							value={this.state.inputValue}
-							onChange={(event) =>
-								this.setState({
-									...this.state,
-									inputValue: event.target.value,
-								})
-							}
-						/>
-						<button className="add-record-button">add film</button>
-					</div>
-				</form>
-				<ul className="filmList">
-					{this.state.films.map((film) => (
-						<li key={film.id}>
-							<label>
-								<input
-									type="text"
-									value={film.name}
-									onChange={(event) =>
-										this.changeFilmName(event, film.id)
-									}
-								/>
-								<button
-									type="button"
-									onClick={() => this.deleteFilm(film.id)}
-								>
-									delete
-								</button>
-							</label>
-						</li>
-					))}
-				</ul>
-			</div>
-		);
-	}
+	const updateInput = (event) => setInputValue(event.target.value);
+	return (
+		<div
+			className="KinoApp"
+			style={{ display: props.show ? "none" : "block" }}
+		>
+			<h3 className="title">Kino app</h3>
+			<Form
+				addFilm={addFilm}
+				inputValue={inputValue}
+				updateInput={updateInput}
+			/>
+			<ul className="filmList">
+				{films.map((film) => (
+					<FilmItem
+						key={film.id}
+						name={film.name}
+						id={film.id}
+						changeFilmName={changeFilmName}
+						deleteFilm={deleteFilm}
+					/>
+				))}
+			</ul>
+		</div>
+	);
 }

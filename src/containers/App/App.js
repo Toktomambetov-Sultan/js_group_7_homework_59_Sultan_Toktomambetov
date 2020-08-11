@@ -13,7 +13,7 @@ function App() {
 						onChange={(e) => setAppIsJokes(e.target.checked)}
 					/>
 				</span>
-				{appIsJokes ? null : <KinoApp />}
+				<KinoApp show={appIsJokes} />
 			</div>
 		</div>
 	);
