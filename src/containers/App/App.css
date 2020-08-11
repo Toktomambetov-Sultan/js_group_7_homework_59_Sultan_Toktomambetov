@@ -1,0 +1,74 @@
+.App{
+	padding: 10px 0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+body span.change-app {
+	position: relative;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+	margin: 20px 0;
+	display: block;
+	margin: 0 auto;
+}
+body span.change-app input {
+	appearance: none;
+	position: relative;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	font-family: "Oswald", sans-serif;
+}
+body span.change-app input:before,
+body span.change-app input:after {
+	z-index: 2;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #ffffff;
+}
+body span.change-app input:before {
+	content: "KinoApp";
+	left: 20px;
+	color: #fff;
+}
+body span.change-app input:after {
+	content: "Jokes";
+	right: 20px;
+	color: #000;
+}
+body span.change-app input {
+	transition: 0.25s -0.1s;
+}
+body span.change-app input:checked {
+	background-color: #ffffff;
+}
+body span.change-app input:checked:before {
+	color: #ffffff;
+	transition: color 0.5s 0.2s;
+}
+body span.change-app input:checked:after {
+	color: #000000;
+	transition: color 0.5s;
+}
+body span.change-app input:not(:checked) {
+	background: #000000;
+	transition: background 0.5s -0.1s;
+}
+body span.change-app input:not(:checked):before {
+	color: #ffffff;
+	transition: color 0.5s;
+}
+body span.change-app input:not(:checked):after {
+	color: #000000;
+	transition: color 0.5s 0.2s;
+}
+@keyframes turn-on {
+	0% {
+		left: 100%;
+	}
+	100% {
+		left: 0%;
+	}
+}
