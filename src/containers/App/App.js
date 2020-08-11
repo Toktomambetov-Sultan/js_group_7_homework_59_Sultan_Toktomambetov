@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import KinoList from "../KinoApp/KinoApp";
+import KinoApp from "../KinoApp/KinoApp";
 
 function App() {
 	const [appIsJokes, setAppIsJokes] = useState(false);
@@ -13,7 +13,7 @@ function App() {
 						onChange={(e) => setAppIsJokes(e.target.checked)}
 					/>
 				</span>
-				{appIsJokes ? null : <KinoList />}
+				{appIsJokes ? null : <KinoApp />}
 			</div>
 		</div>
 	);
