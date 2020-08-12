@@ -34,7 +34,7 @@ export default function KinoApp(props) {
 	return (
 		<div
 			className="KinoApp"
-			style={{ display: props.show ? "none" : "block" }}
+			style={{ display: props.show ? "block" : "none" }}
 		>
 			<h3 className="title">Kino app</h3>
 			<Form
