@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./KinoApp.css";
 import Form from "../../components/KinoApp/Form/FilmForm";
 import FilmItem from "../../components/KinoApp/FilmItem/FilmItem";
+import { useEffect } from "react";
 
 export default function KinoApp(props) {
 	const [films, setFilms] = useState([]);
@@ -13,10 +14,7 @@ export default function KinoApp(props) {
 			alert("This film has in list.");
 			return;
 		}
-		setFilms([
-			...films,
-			{ name: inputValue, id: new Date().getTime() },
-		]);
+		setFilms([...films, { name: inputValue, id: new Date().getTime() }]);
 	};
 	const changeFilmName = (event, id) => {
 		const index = films.findIndex((film) => film.id === id);
@@ -31,6 +29,15 @@ export default function KinoApp(props) {
 		setFilms(copyFilms);
 	};
 	const updateInput = (event) => setInputValue(event.target.value);
+	useEffect(() => {
+		if (!localStorage.KinoApp) return;
+		const localFilms = JSON.parse(localStorage.KinoApp).films;
+		setFilms(localFilms);
+	}, []);
+	useEffect(() => {
+		console.log("1");
+		localStorage.KinoApp = JSON.stringify({ films });
+	}, [films]);
 	return (
 		<div
 			className="KinoApp"
