@@ -1,5 +1,5 @@
 import React from "react";
-import "./Form.css";
+import "./FilmForm.css";
 
 export default function Form(props) {
 	return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./KinoApp.css";
-import Form from "../../components/KinoApp/Form/Form";
+import Form from "../../components/KinoApp/Form/FilmForm";
 import FilmItem from "../../components/KinoApp/FilmItem/FilmItem";
 
 export default function KinoApp(props) {

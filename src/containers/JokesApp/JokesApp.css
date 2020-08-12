@@ -12,51 +12,5 @@
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-.form {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 300px;
-	margin: 0 auto;
-}
-.form .add-count-input {
-	display: block;
-	width: 50%;
-	padding: 5px 15px;
-	margin: 10px 0 15px;
-	border-width: 0;
-	line-height: 40px;
-	border-radius: 20px;
-	border: 1px solid rgb(0, 47, 255);
-	color: rgb(0, 0, 0);
-	font-size: 24px;
-	background: rgba(0, 247, 255, 0.5);
-	font-family: "Roboto", sans-serif;
-	outline: none;
-}
-.form .get-jokes-button {
-	font-size: 22px;
-	padding: 10px 20px;
-	border-radius: 20px;
-	color: rgb(0, 47, 255);
-	border: 3px solid rgb(0, 47, 255);
-	background-color: rgb(0, 247, 255);
-	outline: none;
-}
 
-.joke {
-	display: flex;
-	padding: 10px 20px;
-	margin: 0.5em 0;
-	background: #dad2ca;
-	color: rgb(0, 0, 0);
-	text-decoration: none;
-	border-radius: 0.3em;
-	transition: 0.3s ease-out;
-	justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-}
-.joke:hover {
-	background: #e9e4e0;
-}
+

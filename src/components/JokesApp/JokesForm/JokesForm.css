@@ -1,11 +1,17 @@
-.Form {
+.JokesApp .Form {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	max-width: 600px;
+    margin: 0 auto;
 }
-.Form .add-record-input {
+.JokesApp .Form .description{
+    color: rgb(0, 4, 255);
+    font-size: 22px;
+}
+.JokesApp .Form .add-count-input {
 	display: block;
-	width: 80%;
+	width: 40%;
 	padding: 5px 15px;
 	margin: 10px 0 15px;
 	border-width: 0;
@@ -18,7 +24,7 @@
 	font-family: "Roboto", sans-serif;
 	outline: none;
 }
-.Form .add-record-button {
+.JokesApp .Form .get-jokes-button {
 	font-size: 22px;
 	padding: 10px 20px;
 	border-radius: 20px;

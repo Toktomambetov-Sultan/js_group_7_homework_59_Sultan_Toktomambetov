@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import "./JokesApp.css";
+import JokesForm from "../../components/JokesApp/JokesForm/JokesForm";
+import JokesItem from "../../components/JokesApp/JokesItem/JokesItem";
 const url = "https://api.chucknorris.io/jokes/random";
 export default function JokesApp(props) {
 	const [Jokes, setJokes] = useState([]);
@@ -48,22 +50,14 @@ export default function JokesApp(props) {
 			style={{ display: props.show ? "block" : "none" }}
 		>
 			<h3 className="title">Jokes app</h3>
-			<form onSubmit={getJokes}>
-				<div className="form">
-					<input
-						className="add-count-input"
-						type="text"
-						onChange={changeInputValue}
-						value={countOfJokes}
-					/>
-					<button className="get-jokes-button">get</button>
-				</div>
-			</form>
+			<JokesForm
+				changeInputValue={changeInputValue}
+				countOfJokes={countOfJokes}
+				getJokes={getJokes}
+			/>
 			<ul className="JokesList">
 				{Jokes.map((joke) => (
-					<li className="joke" key={joke.id}>
-						{joke.value}
-					</li>
+					<JokesItem key={joke.id} value={joke.value} />
 				))}
 			</ul>
 		</div>
